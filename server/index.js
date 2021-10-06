@@ -11,14 +11,24 @@ zomato.use(express.json());
 zomato.use(express.urlencoded({ extended: false }));
 zomato.use(helmet());
 zomato.use(cors());
-zomato.use("/auth", Auth); // For Application routes --> localhost:4000/auth/signup
+zomato.use("/auth", Auth); // For Application routes --> localhost:PORT/auth/signup
 
 zomato.get("/", (req, res) => {
   res.json({ message: "Successful" });
 });
 
-zomato.listen(4000, () =>
+zomato.listen(4200, () =>
   ConnectDB()
     .then(() => console.log("Server is up and running"))
     .catch(() => console.log("DB Connection Failed"))
 );
+
+// {
+//   "credentials" : {
+//       "fullName" : "Rushabh Koradia",
+//       "email" : "abc@example.com",
+//       "password" : "abc123",
+//       "address" : "lol street",
+//       "phoneNumber" : 7208222666
+//   }
+// }
