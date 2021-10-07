@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 // Layouts
-import HomeLayout from '../Layout/Home.layout'
+import HomeLayout from '../Layout/Home.layout';
 
 const HomeLayoutHOC = ({ component: Component, ...rest }) => {
     return (
@@ -16,7 +16,7 @@ const HomeLayoutHOC = ({ component: Component, ...rest }) => {
             )}>
         </Route>
         </>
-    )
-}
+    );
+};
 
 export default HomeLayoutHOC;
