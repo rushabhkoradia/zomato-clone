@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
+import FoodTab from '../Components/FoodTab';
 
 const HomeLayout = (props) => {
     return (
@@ -8,6 +9,7 @@ const HomeLayout = (props) => {
                 <Navbar />
                 { props.children }
             </div> 
+            <FoodTab />
         </>
     );
 };

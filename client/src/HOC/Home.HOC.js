@@ -8,13 +8,13 @@ const HomeLayoutHOC = ({ component: Component, ...rest }) => {
     return (
         <>
             <Route
-            { ...rest }
-            component = {(props) => (
-                <HomeLayout>
-                    <Component { ...rest } />
-                </HomeLayout>
-            )}>
-        </Route>
+                { ...rest }
+                component = {(props) => (
+                    <HomeLayout>
+                        <Component { ...rest } />
+                    </HomeLayout>
+                )} 
+            />
         </>
     );
 };
