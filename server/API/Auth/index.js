@@ -2,10 +2,10 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+const Router = express.Router();
+
 // Models
 import { UserModel }  from '../../database/user';
-
-const Router = express.Router();
 
 /*
 |==============================================|
@@ -19,7 +19,7 @@ const Router = express.Router();
 
 Router.post("/signup", async (req, res) => {
     try {
-        const {email, password, fullName, phoneNumber} = req.body.credentials;
+        const { email, password, fullName, phoneNumber } = req.body.credentials;
 
         //Check whether email / phone number exists
         const checkUserByEmail = await UserModel.findOne({ email });

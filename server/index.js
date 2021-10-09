@@ -1,4 +1,4 @@
-require("dotenv").config;
+require("dotenv").config();
 
 import express from "express";
 import cors from "cors";
@@ -17,7 +17,7 @@ zomato.get("/", (req, res) => {
   res.json({ message: "Successful" });
 });
 
-zomato.listen(4200, () =>
+zomato.listen(5000, () =>
   ConnectDB()
     .then(() => console.log("Server is up and running"))
     .catch(() => console.log("DB Connection Failed"))
