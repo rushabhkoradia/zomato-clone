@@ -34,4 +34,28 @@ Router.post("/signup", async (req, res) => {
     }
 });
 
+/*
+|==============================================|
+| Route       | /signin                        |
+| Description | Signin with email and password |
+| Params      | None                           |
+| Access      | Public                         |
+| Method      | Post                           |
+|==============================================|
+*/
+
+Router.post("/signin", async (req, res) => {
+    try {
+        const user = await UserModel.findByEmailAndPassword(req.body.credentials);
+
+        // JWT Auth Token
+        const token = newUser.generateJwtToken();
+        return res.status(200).json({token, status: "Success"});
+    }
+    
+    catch (error) {
+        return res.status(500).json({error: error.message});        
+    }
+});
+
 export default Router;
