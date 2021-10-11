@@ -5,7 +5,11 @@ import cors from "cors";
 import helmet from "helmet";
 import passport from "passport";
 import googleAuthConfig from './config/google.config'; // config
-import Auth from "./API/Auth"; // API
+
+// API
+import Auth from "./API/Auth";
+import Restaurant from './API/Restaurant';
+
 import ConnectDB from "./database/connection"; // DB
 
 const zomato = express();
@@ -18,7 +22,9 @@ zomato.use(passport.session());
 
 googleAuthConfig(passport); // passport configuration
 
-zomato.use("/auth", Auth); // For Application routes --> localhost:PORT/auth/signup
+// For Application routes
+zomato.use("/auth", Auth); // localhost:5000/auth/signup
+zomato.use("./restaurant", Restaurant);
 
 zomato.get("/", (req, res) => {
   res.json({ message: "Successful" });
