@@ -1,6 +1,5 @@
 // Libraries
-import { Express } from 'express';
-import { addListener } from 'nodemon';
+import express from 'express';
 
 // DB Model
 import { FoodModel } from '../../database/allModels';
@@ -10,7 +9,7 @@ const Router = express.Router();
 /*
 |========================================================|
 | Route       | /                                        | 
-| Description | Get Food details on specific Restaurant  |
+| Description | Get Food details of specific Restaurant  |
 | Params      | _id                                      |
 | Body        | SearchString                             |
 | Access      | Public                                   |
@@ -50,6 +49,6 @@ Router.get("/c/:category", async (req, res) => {
     catch(error) {
         return res.status(500).json({ error: error.message });
     }
-})
+});
 
 export default Router;

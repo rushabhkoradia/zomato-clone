@@ -1,3 +1,6 @@
+// Libraries
+import express from 'express';
+
 import { RestaurantModel } from '../../database/allModels';
 
 const Router = express.Router();
@@ -64,11 +67,12 @@ Router.get("/search", async (req, res) => {
         const { searchString } = req.body;
         const restaurants = await RestaurantModel.find({
             name: { $regex: searchString, $options: "i" }
-        })
+        });
+        return res.json({ restaurants });
     }
     catch (error) {
         return res.status(500).json({ error: error.message });
     }
-})
+});
 
 export default Router;
