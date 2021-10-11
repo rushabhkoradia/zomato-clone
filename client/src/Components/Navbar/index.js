@@ -76,11 +76,13 @@ const NavLg = () => {
 const Navbar = () => {
     return (
         <>
-            <nav className="md:hidden">
-                <NavSm />
-            </nav>   
-            <nav className="sm:hidden lg:block">
-                <NavLg />
+            <nav>
+                <div className="md:hidden">
+                    <NavSm />
+                </div>   
+                <div className="hidden lg:block">
+                    <NavLg />
+                </div>
             </nav>
         </>
     );
