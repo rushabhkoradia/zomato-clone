@@ -3,6 +3,8 @@ require("dotenv").config();
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import passport from "passport";
+import googleAuthConfig from './config/google.config'; // config
 import Auth from "./API/Auth"; // API
 import ConnectDB from "./database/connection"; // DB
 
@@ -11,6 +13,11 @@ zomato.use(express.json());
 zomato.use(express.urlencoded({ extended: false }));
 zomato.use(helmet());
 zomato.use(cors());
+zomato.use(passport.initialize());
+zomato.use(passport.session());
+
+googleAuthConfig(passport); // passport configuration
+
 zomato.use("/auth", Auth); // For Application routes --> localhost:PORT/auth/signup
 
 zomato.get("/", (req, res) => {
