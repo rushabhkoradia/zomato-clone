@@ -42,7 +42,7 @@ Router.put("/update/:_userId", async (req, res) => {
     try {
         const { _userId } = req.params;
         const { userData } = req.body;
-        const updateUserData = await UserModel.findByIdAndUpdate(userId, { $set: userData }, { new: true });
+        const updateUserData = await UserModel.findByIdAndUpdate(_userId, { $set: userData }, { new: true });
         return res.json({ user: updateUserData });
     }
     catch(error) {
@@ -50,4 +50,4 @@ Router.put("/update/:_userId", async (req, res) => {
     }
 });
 
-export default Router:
+export default Router;

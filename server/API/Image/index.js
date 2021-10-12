@@ -7,7 +7,7 @@ import multer from 'multer';
 import { ImageModel } from '../../database/allModels';
 
 // Utilities
-import { s3upload } from '../../Utils/AWS/s3';
+import { s3Upload } from '../../Utils/AWS/s3';
 
 const Router = express.Router();
 
@@ -39,6 +39,7 @@ Router.post("/", upload.single("file"), async (req, res) => {
         };
 
         const uploadImage = await s3Upload(bucketOptions);
+        res.status(200).json({ uploadImage });
     }
     catch(error) {
         return res.json({ error: error.message });
