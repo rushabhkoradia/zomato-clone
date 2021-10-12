@@ -1,17 +1,19 @@
 // Libraries
 import express from 'express';
+import AWS from 'aws-sdk';
+import multer from 'multer';
 
 // DB Model
 import { ImageModel } from '../../database/allModels';
 
+// Utilities
+import { s3upload } from '../../Utils/AWS/s3';
+
 const Router = express.Router();
 
-// AWS S3 Bucket config
-const s3Bucket = new AWS.S3({
-    accessKeyId: process.env.AWS_S3_ACESS_KEY,
-    secretAccessKey: process.env.AWS_S3_SECRET_KEY,
-    region: "ap-south-1"
-});
+// Multer Storage
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 /*
 |=====================================================================|
@@ -23,9 +25,20 @@ const s3Bucket = new AWS.S3({
 |=====================================================================|
 */
 
-Router.post("/", async (req, res) => {
+Router.post("/", upload.single("file"), async (req, res) => {
     try {
-        const 
+        const file = req.file;
+
+        //S3 bucket options
+        const bucketOptions = {
+            Bucket: "food-delivery-web-app",
+            Key: file.originalname,
+            Body: file.buffer,
+            contentType: file.mimeType,
+            ACL: "public-read"
+        };
+
+        const uploadImage = await s3Upload(bucketOptions);
     }
     catch(error) {
         return res.json({ error: error.message });
