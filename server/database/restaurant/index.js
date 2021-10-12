@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { ReviewModel } from '../reviews';
 
 const RestaurantSchema = new mongoose.Schema({
     name: {type: String, required: true},
@@ -34,4 +33,4 @@ const RestaurantSchema = new mongoose.Schema({
     timestamps: true
 });
 
-export const RestaurantModel = mongoose.modell("Reviews", ReviewModel);
+export const RestaurantModel = mongoose.model("Restaurants", RestaurantSchema);

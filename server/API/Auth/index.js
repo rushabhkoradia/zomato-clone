@@ -50,7 +50,7 @@ Router.post("/signin", async (req, res) => {
         const user = await UserModel.findByEmailAndPassword(req.body.credentials);
 
         // JWT Auth Token
-        const token = newUser.generateJwtToken();
+        const token = user.generateJwtToken();
         return res.status(200).json({token, status: "Success"});
     }
     
