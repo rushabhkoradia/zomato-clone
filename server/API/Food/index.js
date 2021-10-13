@@ -1,10 +1,6 @@
-// Libraries
 import express from 'express';
-
-// DB Model
-import { FoodModel } from '../../database/allModels';
-
-import { ValidateRestaurantId, ValidateRestaurantCategory } from '../../validation/food';
+import { FoodModel } from '../../database/allModels'; // DB Model
+import { ValidateRestaurantId, ValidateRestaurantCategory } from '../../validation/food'; // Validation
 
 const Router = express.Router();
 
