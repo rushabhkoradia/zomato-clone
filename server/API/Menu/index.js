@@ -1,8 +1,6 @@
-// Libraries
 import express from "express";
-
-// DB Model
-import { MenuModel, ImageModel } from '../../database/allModels';
+import { MenuModel, ImageModel } from '../../database/allModels'; // DB Model
+import { ValidateMenuId } from '../../validation/menu';
 
 const Router = express.Router();
 
@@ -19,6 +17,7 @@ const Router = express.Router();
 
 Router.get("/menu/:_id", async (req, res) => {
     try {
+        await ValidateMenuId(req.params);
         const { _id } = req.params;
         const menus = await MenuModel.findOne(_id);
         return res.json({ menus });
