@@ -1,12 +1,13 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import passport from 'passport';
 
 const Router = express.Router();
 
-// Models
-import { UserModel }  from '../../database/user';
-import passport from 'passport';
+import { UserModel }  from '../../database/user'; // Models
+
+import { ValidateSignUp, ValidateSignIn } from '../../validation/auth'; // Validation
 
 /*
 |==============================================|
@@ -20,6 +21,8 @@ import passport from 'passport';
 
 Router.post("/signup", async (req, res) => {
     try {
+        await ValidateSignUp(req.body.credentials);
+
         await UserModel.findEmailAndPhone(req.body.credentials);
 
         // Database
@@ -47,6 +50,8 @@ Router.post("/signup", async (req, res) => {
 
 Router.post("/signin", async (req, res) => {
     try {
+        await ValidateSignIn(req.body.credentials);
+
         const user = await UserModel.findByEmailAndPassword(req.body.credentials);
 
         // JWT Auth Token
