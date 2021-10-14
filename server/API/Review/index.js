@@ -1,8 +1,5 @@
-// Libraries
 import express from 'express';
-
-// DB Model
-import { ReviewModel } from '../../database/allModels';
+import { ReviewModel } from '../../database/allModels'; // DB Model
 
 const Router = express.Router();
 

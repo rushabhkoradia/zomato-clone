@@ -1,8 +1,5 @@
-// Libraries
 import express from 'express';
-
-// DB Model
-import { UserModel } from '../../database/allModels';
+import { UserModel } from '../../database/allModels'; // DB Model
 
 const Router = express.Router();
 

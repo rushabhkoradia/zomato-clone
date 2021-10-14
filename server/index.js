@@ -4,7 +4,8 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import passport from "passport";
-import googleAuthConfig from './config/google.config'; // config
+import googleAuthConfig from './config/google.config'; // google config
+import routeConfig from './config/route.config'; // user authentication
 
 // API's
 import Auth from "./API/Auth";
@@ -26,7 +27,9 @@ zomato.use(cors());
 zomato.use(passport.initialize());
 zomato.use(passport.session());
 
-googleAuthConfig(passport); // passport configuration
+// Passport Configuration
+googleAuthConfig(passport);
+routeConfig(passport);
 
 // For Application routes
 zomato.use("/auth", Auth); // localhost:5000/auth/signup
