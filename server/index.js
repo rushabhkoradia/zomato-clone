@@ -50,13 +50,3 @@ zomato.listen(5000, () =>
     .then(() => console.log("Server is up and running"))
     .catch(() => console.log("DB Connection Failed"))
 );
-
-// {
-//   "credentials" : {
-//       "fullName" : "Rushabh Koradia",
-//       "email" : "abc@example.com",
-//       "password" : "abc123",
-//       "address" : "lol street",
-//       "phoneNumber" : 7208222666
-//   }
-// }

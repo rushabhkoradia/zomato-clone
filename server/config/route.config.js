@@ -11,7 +11,7 @@ const options = {
 };
 
 export default (passport) => {
-    passport.UserModel(
+    passport.use(
         new JwtStrategy(options, async (jwt__payload, done) => {
             try {
                 const doesUserExist = UserModel.findById(jwt__payload.user);
